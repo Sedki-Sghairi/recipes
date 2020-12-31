@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
-export default function CategoriesScreen() {
+export default function CategoriesScreen(props) {
+	console.log(props);
 	return (
 		<View>
 			<Text style={styles.bold}>hello from CategoriesScreen</Text>
+			<Button title="next" onPress={() => props.navigation.navigate('CategoryMeals')} />
 		</View>
 	);
 }
