@@ -5,17 +5,21 @@ import { CATEGORIES } from '../data/dummy-data';
 
 export default function CategoryMealsScreen(props) {
 	const catId = props.navigation.getParam('categoryId');
-	const sed = CATEGORIES.find((x) => x.id === catId).title;
+	const myTitle = CATEGORIES.find((x) => x.id === catId).title;
 
 	return (
 		<View>
-			<Text>{sed.title}</Text>
+			<Text>{myTitle.title}</Text>
 			<Button title="next" onPress={() => props.navigation.navigate('MealDetail')} />
 		</View>
 	);
 }
 
 CategoryMealsScreen.navigationOptions = (a) => {
-	console.log(a);
+	const id = a.navigation.getParam('categoryId');
+	const foo = CATEGORIES.find((x) => x.id === id).title;
+	return {
+		headerTitle: foo
+	};
 };
 const styles = StyleSheet.create({});
