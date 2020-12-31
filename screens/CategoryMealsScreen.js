@@ -8,9 +8,8 @@ export default function CategoryMealsScreen(props) {
 	const myTitle = CATEGORIES.find((x) => x.id === catId).title;
 
 	return (
-		<View>
-			<Text>{myTitle.title}</Text>
-			<Button title="next" onPress={() => props.navigation.navigate('MealDetail')} />
+		<View style={styles.screen}>
+			<Text>{myTitle}</Text>
 		</View>
 	);
 }
@@ -22,4 +21,10 @@ CategoryMealsScreen.navigationOptions = (a) => {
 		headerTitle: foo
 	};
 };
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	screen: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	}
+});

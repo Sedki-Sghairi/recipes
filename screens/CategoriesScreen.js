@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Platform, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
-import colors from '../constants/colors';
 import { CATEGORIES } from '../data/dummy-data';
 
 export default function CategoriesScreen(props) {
@@ -27,11 +26,7 @@ export default function CategoriesScreen(props) {
 	);
 }
 CategoriesScreen.navigationOptions = {
-	headerTitle: 'Categories',
-	headerStyle: {
-		backgroundColor: Platform.OS === 'android' ? colors.sun : '#fff'
-	},
-	headerTintColor: '#333'
+	headerTitle: 'Categories'
 };
 
 const styles = StyleSheet.create({
