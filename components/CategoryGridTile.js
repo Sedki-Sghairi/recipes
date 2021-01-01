@@ -8,26 +8,28 @@ if (Platform.OS === 'android' && Platform.Version >= 21) {
 }
 export default function CategoryGridTile(props) {
 	return (
-		<TouchCmp
-			style={styles.gridItem}
-			onPress={() =>
-				props.navigate.navigate('CategoryMeals', {
-					categoryId: props.itemData.id
-				})}
-		>
-			<View
-				style={{
-					...styles.container,
-					...{
-						backgroundColor: props.itemData.color
-					}
-				}}
+		<View style={styles.gridItem}>
+			<TouchCmp
+				style={{ flex: 1 }}
+				onPress={() =>
+					props.navigate.navigate('CategoryMeals', {
+						categoryId: props.itemData.id
+					})}
 			>
-				<Text style={styles.title} numberOfLines={2}>
-					{props.itemData.title}
-				</Text>
-			</View>
-		</TouchCmp>
+				<View
+					style={{
+						...styles.container,
+						...{
+							backgroundColor: props.itemData.color
+						}
+					}}
+				>
+					<Text style={styles.title} numberOfLines={2}>
+						{props.itemData.title}
+					</Text>
+				</View>
+			</TouchCmp>
+		</View>
 	);
 }
 
