@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, Text, View, Platform, Dimensions } from 'react-native';
 import { TouchableOpacity, TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 let TouchCmp = TouchableOpacity;
@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
 	gridItem: {
 		flex: 1,
 		margin: 15,
-		height: 150
+		height: 150,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	container: {
 		flex: 1,
@@ -46,11 +48,13 @@ const styles = StyleSheet.create({
 		shadowRadius: 10,
 		elevation: 3,
 		padding: 15,
-		justifyContent: 'flex-end',
-		alignItems: 'flex-end'
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: Dimensions.get('window').width / 2.5
 	},
 	title: {
-		fontSize: 22,
-		textAlign: 'right'
+		fontSize: 17,
+		textAlign: 'center',
+		fontWeight: 'bold'
 	}
 });
