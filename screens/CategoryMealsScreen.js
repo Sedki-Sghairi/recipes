@@ -13,7 +13,10 @@ export default function CategoryMealsScreen(props) {
 				complexity={itemData.item.complexity}
 				affordability={itemData.item.affordability}
 				title={itemData.item.title}
-				onSelectMeal={() => {}}
+				onSelectMeal={() =>
+					props.navigation.navigate('MealDetail', {
+						mealId: itemData.item.id
+					})}
 			/>
 		);
 	};
