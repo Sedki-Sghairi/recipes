@@ -1,14 +1,20 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import MealItem from '../components/MealItem';
 import colors from '../constants/colors';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 
 export default function CategoryMealsScreen(props) {
 	const renderMealItem = (itemData) => {
 		return (
-			<View>
-				<Text>{itemData.item.title}</Text>
-			</View>
+			<MealItem
+				duration={itemData.item.duration}
+				image={itemData.item.imageUrl}
+				complexity={itemData.item.complexity}
+				affordability={itemData.item.affordability}
+				title={itemData.item.title}
+				onSelectMeal={() => {}}
+			/>
 		);
 	};
 	const catId = props.navigation.getParam('categoryId');
@@ -16,7 +22,12 @@ export default function CategoryMealsScreen(props) {
 	const meals = MEALS.filter((meal) => meal.categoryIds.indexOf(catId) >= 0);
 	return (
 		<View style={styles.screen}>
-			<FlatList data={meals} keyExtractor={(item, index) => item.id} renderItem={renderMealItem} />
+			<FlatList
+				style={{ width: '100%' }}
+				data={meals}
+				keyExtractor={(item, index) => item.id}
+				renderItem={renderMealItem}
+			/>
 		</View>
 	);
 }
