@@ -7,9 +7,9 @@ import { Platform } from 'react-native';
 import colors from '../constants/colors';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import { Ionicons } from '@expo/vector-icons';
-//bottom navigation
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import React from 'react';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 const RootStack = createStackNavigator(
 	{
@@ -30,32 +30,37 @@ const RootStack = createStackNavigator(
 		}
 	}
 );
-
-const Tab = createBottomTabNavigator(
-	{
-		Meals: {
-			screen: RootStack,
-			navigationOptions: {
-				tabBarIcon: (tabIfo) => {
-					return <Ionicons name="ios-restaurant" size={25} color={tabIfo.tintColor} />;
-				}
-			}
-		},
-		Favorites: {
-			screen: FavoritesScreen,
-			navigationOptions: {
-				tabBarIcon: (tabinfo) => {
-					return <Ionicons name="ios-star" size={25} color={tabinfo.tintColor} />;
-				}
-			}
+const navOpt = {
+	Meals: {
+		screen: RootStack,
+		navigationOptions: {
+			tabBarIcon: (tabIfo) => {
+				return <Ionicons name="ios-restaurant" size={25} color={tabIfo.tintColor} />;
+			},
+			tabBarColor: colors.winter
 		}
 	},
-	{
-		tabBarOptions: {
-			activeTintColor: colors.earth
+	Favorites: {
+		screen: FavoritesScreen,
+		navigationOptions: {
+			tabBarIcon: (tabinfo) => {
+				return <Ionicons name="ios-star" size={25} color={tabinfo.tintColor} />;
+			},
+			tabBarColor: colors.automn
 		}
 	}
-);
+};
+const Tab =
+	Platform.OS === 'android'
+		? createMaterialBottomTabNavigator(navOpt, {
+				activeColorLight: 'white',
+				shifting: true
+			})
+		: createBottomTabNavigator(navOpt, {
+				tabBarOptions: {
+					activeTintColor: colors.earth
+				}
+			});
 const AppContainer = createAppContainer(Tab);
 
 export default AppContainer;
