@@ -39,17 +39,17 @@ const styles = StyleSheet.create({
 		margin: 15,
 		height: 150,
 		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	container: {
-		flex: 1,
+		justifyContent: 'center',
 		borderRadius: 10,
 		shadowColor: 'black',
 		shadowOpacity: 0.2,
-		shadowOffset: { width: 0, height: 2 },
-		shadowRadius: 10,
-		elevation: 3,
-		padding: 15,
+		shadowOffset: { width: 0, height: 1 },
+		shadowRadius: 5,
+		elevation: 4,
+		overflow: 'hidden'
+	},
+	container: {
+		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		width: Dimensions.get('window').width / 2.5
