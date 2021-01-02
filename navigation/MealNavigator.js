@@ -30,6 +30,23 @@ const RootStack = createStackNavigator(
 		}
 	}
 );
+const Fav = createStackNavigator(
+	{
+		Favorites: FavoritesScreen,
+		MealDetail: MealDetailScreen
+	},
+	{
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: Platform.OS === 'android' ? colors.sun : '#fff'
+			},
+			headerTintColor: '#333'
+		}
+	}
+);
+FavoritesScreen.navigationOptions = {
+	headerTitle: 'Your Favorites'
+};
 const navOpt = {
 	Meals: {
 		screen: RootStack,
@@ -41,7 +58,7 @@ const navOpt = {
 		}
 	},
 	Favorites: {
-		screen: FavoritesScreen,
+		screen: Fav,
 		navigationOptions: {
 			tabBarIcon: (tabinfo) => {
 				return <Ionicons name="ios-star" size={25} color={tabinfo.tintColor} />;
