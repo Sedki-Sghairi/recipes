@@ -1,15 +1,22 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import colors from '../constants/colors';
-import { CATEGORIES } from '../data/dummy-data';
+import { CATEGORIES, MEALS } from '../data/dummy-data';
 
 export default function CategoryMealsScreen(props) {
+	const renderMealItem = (itemData) => {
+		return (
+			<View>
+				<Text>{itemData.item.title}</Text>
+			</View>
+		);
+	};
 	const catId = props.navigation.getParam('categoryId');
 	const myTitle = CATEGORIES.find((x) => x.id === catId).title;
-
+	const meals = MEALS.filter((meal) => meal.categoryIds.indexOf(catId) >= 0);
 	return (
 		<View style={styles.screen}>
-			<Text>{myTitle}</Text>
+			<FlatList data={meals} keyExtractor={(item, index) => item.id} renderItem={renderMealItem} />
 		</View>
 	);
 }
