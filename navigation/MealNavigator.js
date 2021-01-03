@@ -77,12 +77,37 @@ const Tab =
 					activeTintColor: colors.earth
 				}
 			});
-const FiltersNavigator = createStackNavigator({
-	screen: FiltersScreen
-});
-const MainNavigator = createDrawerNavigator({
-	MealsFavs: Tab,
-	Filters: FiltersNavigator
-});
+const FiltersNavigator = createStackNavigator(
+	{
+		screen: FiltersScreen
+	},
+	{
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: Platform.OS === 'android' ? colors.sun : '#fff'
+			},
+			headerTintColor: '#333'
+		}
+	}
+);
+const MainNavigator = createDrawerNavigator(
+	{
+		MealsFavs: {
+			screen: Tab,
+			navigationOptions: {
+				drawerLabel: 'Meals'
+			}
+		},
+		Filters: FiltersNavigator
+	},
+	{
+		contentOptions: {
+			activeTintColor: colors.grass,
+			labelStyle: {
+				fontWeight: 'bold'
+			}
+		}
+	}
+);
 const AppContainer = createAppContainer(MainNavigator);
 export default AppContainer;
