@@ -10,7 +10,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import React from 'react';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import FiltersScreen from '../screens/FiltersScreen';
 const RootStack = createStackNavigator(
 	{
 		Categories: {
@@ -44,9 +45,7 @@ const Fav = createStackNavigator(
 		}
 	}
 );
-FavoritesScreen.navigationOptions = {
-	headerTitle: 'Your Favorites'
-};
+
 const navOpt = {
 	Meals: {
 		screen: RootStack,
@@ -78,6 +77,12 @@ const Tab =
 					activeTintColor: colors.earth
 				}
 			});
-const AppContainer = createAppContainer(Tab);
-
+const FiltersNavigator = createStackNavigator({
+	screen: FiltersScreen
+});
+const MainNavigator = createDrawerNavigator({
+	MealsFavs: Tab,
+	Filters: FiltersNavigator
+});
+const AppContainer = createAppContainer(MainNavigator);
 export default AppContainer;

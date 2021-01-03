@@ -18,7 +18,7 @@ MealDetailScreen.navigationOptions = (data) => {
 
 	return {
 		headerTitle: myMeal.title,
-		aderRight: () => (
+		headerRight: (
 			<HeaderButtons HeaderButtonComponent={MyHeaderButton}>
 				<Item title="Favorite" iconName="ios-star" onPress={() => console.log('ok')} />
 			</HeaderButtons>
