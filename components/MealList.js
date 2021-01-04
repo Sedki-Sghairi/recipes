@@ -2,9 +2,12 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import MealItem from './MealItem';
+import { useSelector } from 'react-redux';
 
 export default function MealList(props) {
+	const myFavorite = useSelector((state) => state.favorite);
 	const renderMealItem = (itemData) => {
+		const isFavorite = myFavorite.some((x) => x.id === itemData.item.id);
 		return (
 			<MealItem
 				duration={itemData.item.duration}
@@ -15,7 +18,8 @@ export default function MealList(props) {
 				onSelectMeal={() =>
 					props.navigation.navigate('MealDetail', {
 						mealId: itemData.item.id,
-						mealTitle: itemData.item.title
+						mealTitle: itemData.item.title,
+						isFavorite: isFavorite
 					})}
 			/>
 		);
