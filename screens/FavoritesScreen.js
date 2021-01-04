@@ -5,7 +5,7 @@ import MealList from '../components/MealList';
 import { useSelector } from 'react-redux';
 const FavoritesScreen = (props) => {
 	const MEALS = useSelector((state) => state.favorite);
-	return <MealList listData={favMeals} navigation={props.navigation} />;
+	return <MealList listData={MEALS} navigation={props.navigation} />;
 };
 
 FavoritesScreen.navigationOptions = (navData) => {
