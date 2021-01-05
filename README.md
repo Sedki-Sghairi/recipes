@@ -2,4 +2,5 @@
 #react native app
 -get meal recipes
 ```
-[demo](https://j.gifs.com/nxELG7.gif)
+[![asciicast](https://j.gifs.com/OMNWJr.gif)](https://j.gifs.com/nxELG7.gif)
+
