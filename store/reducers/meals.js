@@ -19,7 +19,7 @@ export default function mealReducer(state = initialState, action) {
 			}
 		case SET_FILTERS:
 			const filters = action.filters;
-			const filteredMeals = state.meals.map((meal) => {
+			const filteredMeals = state.meals.filter((meal) => {
 				if (filters.glutenFree && !meal.isGlutenFree) {
 					return false;
 				}
@@ -27,7 +27,6 @@ export default function mealReducer(state = initialState, action) {
 					return false;
 				}
 				if (filters.vegan && !meal.isVegan) {
-					console.log(meal);
 					return false;
 				}
 				if (filters.vegetarian && !meal.isVegetarian) {

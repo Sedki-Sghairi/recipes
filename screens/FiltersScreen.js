@@ -5,7 +5,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import MyHeaderButton from '../components/HeaderButton';
 import colors from '../constants/colors';
 import { useDispatch } from 'react-redux';
-import setFilters from '../store/actions/mealAction';
+import { setFilters } from '../store/actions/mealAction';
 
 const TurnOnOff = (props) => (
 	<View style={styles.filterContainer}>
@@ -32,12 +32,13 @@ export default function FiltersScreen(props) {
 			const appliedFilters = {
 				glutenFree: isGlutenFree,
 				lactoseFree: isLactoseFree,
-				vegan: isVegan,
-				vegetarian: isVegetarian
+				vegetarian: isVegetarian,
+				vegan: isVegan
 			};
+
 			dispatch(setFilters(appliedFilters));
 		},
-		[ isGlutenFree, isLactoseFree, isVegan, isVegetarian ]
+		[ isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch ]
 	);
 	useEffect(
 		() => {
@@ -58,6 +59,7 @@ export default function FiltersScreen(props) {
 	);
 }
 FiltersScreen.navigationOptions = (navData) => {
+	const foo = navData.navigation.getParam('save');
 	return {
 		headerTitle: 'Filter Meals',
 		headerLeft: (
@@ -67,7 +69,7 @@ FiltersScreen.navigationOptions = (navData) => {
 		),
 		headerRight: (
 			<HeaderButtons HeaderButtonComponent={MyHeaderButton}>
-				<Item title="save" iconName="ios-save" onPress={() => navData.navigation.getParam('save')} />
+				<Item title="save" iconName="ios-save" onPress={foo} />
 			</HeaderButtons>
 		)
 	};
